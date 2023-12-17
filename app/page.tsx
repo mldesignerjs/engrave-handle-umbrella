@@ -13,7 +13,7 @@ export default function Home() {
     const [handle, setHandle] = useState<handleO>(umbrellas[0].handle[0])
     const [showEditMode, setShowEditMode] = useState<boolean>(true)
 
-    const [text1, setText1] = useState<string>('Nguyễn Văn A')
+    const [text1, setText1] = useState<string>('Tên Của Bạn')
     const [fontSize1, setFontSize1] = useState<string>('22')
     const [letterSpacing1, setLetterSpacing1] = useState<string>('0')
 
@@ -70,8 +70,8 @@ export default function Home() {
     }
 
     return (
-        <div className="lg:px-24 max-lg:px-4 lg:pt-10 max-lg:pt-10">
-            <h2 className="text-center text-xl py-10" style={engraveFonts[10].style}>
+        <div className="lg:px-24 max-lg:px-4 lg:pt-20 max-lg:pt-20">
+            <h2 className="text-center text-xl" style={engraveFonts[10].style}>
                 Hãy chọn font, kích cỡ chữ để khắc tên lên tay cầm ô dù
             </h2>
             <button

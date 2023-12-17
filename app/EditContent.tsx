@@ -16,7 +16,7 @@ export function EditContent(props: IEditContentProps) {
                     name="contentEngrave"
                     className="w-full py-2 px-2 rounded border bg-gray-100 text-main font-bold"
                     placeholder="Nhập nội dung bạn muốn khắc"
-                    defaultValue={props.text}
+                    // defaultValue={props.text}
                     onChange={(e) => props.onChangeContent(e.target.value)}
                 />
             </div>
