@@ -137,17 +137,27 @@ export const kindHandle = [
         name: 'Trắc/Mun',
         value: 'tm',
     },
+    {
+        name: 'Nhựa cao cấp',
+        value: 'nhua',
+    },
 ]
 
 export const umbrellas: umbrellaA = [
     {
         id: 0,
+        name: 'Ô tự động',
+        sizeHandle: 5.5,
+        handle: [{ value: 'nhua', urlImg: 'o-td.jpg', id: 0 }],
+    },
+    {
+        id: 1,
         name: 'Chagoi',
         sizeHandle: 8,
         handle: [{ value: 'tm', urlImg: 'chagoi-den.jpg', id: 0 }],
     },
     {
-        id: 1,
+        id: 2,
         name: 'G27',
         sizeHandle: 12,
         handle: [
@@ -156,7 +166,7 @@ export const umbrellas: umbrellaA = [
         ],
     },
     {
-        id: 2,
+        id: 3,
         name: 'G30',
         sizeHandle: 12,
         handle: [
