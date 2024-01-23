@@ -95,6 +95,8 @@ body {
     transform-style: preserve-3d;
     width: 400px;
     height: 100px;
+    /* width: 12cm;
+    height: 3cm; */
     text-align: center;
     transform-origin: center;
     position: absolute;
@@ -129,10 +131,13 @@ body {
     -o-transform: rotateX(34deg) rotateY(-6deg) rotateZ(-25deg);
 }
 
-span.engrave {
+.engraveText {
+    color: transparent;
+    -webkit-background-clip: text;
+    display: block;
     font-size: 37px;
     line-height: 100px;
-    font-weight: 900;
+    /* font-weight: 900; */
 }
 
 /* max-lg */
