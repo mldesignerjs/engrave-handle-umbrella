@@ -286,7 +286,7 @@ export default function Home() {
                                     <span
                                         className={`engrave leading-none block ${handle.value}`}
                                         style={{
-                                            width: `${currentUmbrella.sizeHandle}cm`,
+                                            width: `${currentUmbrella.sizeHandle}px`,
                                             letterSpacing: `${letterSpacing1}px`,
                                             fontSize: `${fontSize1}pt`,
                                         }}
@@ -295,9 +295,9 @@ export default function Home() {
                                     </span>
                                     {lineNumber === '2' && (
                                         <span
-                                            className={`engrave leading-none block ${handle.value}`}
+                                            className={`engrave ${handle.value}`}
                                             style={{
-                                                width: `${currentUmbrella.sizeHandle}cm`,
+                                                width: `${currentUmbrella.sizeHandle}px`,
                                                 letterSpacing: `${letterSpacing2}px`,
                                                 fontSize: `${fontSize2}pt`,
                                                 marginTop: `${lineHeight}px`,

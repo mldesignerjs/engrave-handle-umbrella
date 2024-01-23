@@ -1,10 +1,20 @@
-import { faFacebook, faInstagram, faYoutube, faTiktok } from '@fortawesome/free-brands-svg-icons'
+import {
+    faFacebook,
+    faInstagram,
+    faYoutube,
+    faTiktok,
+} from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import localFont from 'next/font/local'
 
 export type handleO = { value: string; urlImg: string; id: number }
 export type handleA = handleO[]
-export type umbrellaO = { id: number; name: string; sizeHandle: number; handle: handleA }
+export type umbrellaO = {
+    id: number
+    name: string
+    sizeHandle: number
+    handle: handleA
+}
 export type umbrellaA = umbrellaO[]
 
 export const nameSite = 'MLD'
@@ -120,11 +130,13 @@ export const footerMenuList = []
 export const sizeHandle = [
     {
         name: '8 cm',
-        value: 8,
+        value: 267,
+        // value: 8,
     },
     {
         name: '12 cm',
-        value: 12,
+        value: 340,
+        // value: 12,
     },
 ]
 
@@ -147,19 +159,20 @@ export const umbrellas: umbrellaA = [
     {
         id: 0,
         name: 'Ô tự động',
-        sizeHandle: 5.5,
+        sizeHandle: 215.42,
+        // sizeHandle: 5.5,
         handle: [{ value: 'nhua', urlImg: 'o-td.jpg', id: 0 }],
     },
     {
         id: 1,
         name: 'Chagoi',
-        sizeHandle: 8,
+        sizeHandle: 302.36,
         handle: [{ value: 'tm', urlImg: 'chagoi-den.jpg', id: 0 }],
     },
     {
         id: 2,
         name: 'G27',
-        sizeHandle: 12,
+        sizeHandle: 453.53,
         handle: [
             { value: 'cn', urlImg: 'g27-cn.jpg', id: 0 },
             { value: 'tm', urlImg: 'g27-trac.jpg', id: 1 },
@@ -168,7 +181,7 @@ export const umbrellas: umbrellaA = [
     {
         id: 3,
         name: 'G30',
-        sizeHandle: 12,
+        sizeHandle: 453.53,
         handle: [
             { value: 'cn', urlImg: 'g30-cn.jpg', id: 0 },
             { value: 'tm', urlImg: 'g30-trac.jpg', id: 1 },
