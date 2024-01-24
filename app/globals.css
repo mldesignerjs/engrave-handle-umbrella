@@ -93,42 +93,59 @@ body {
 .engraved {
     /* background-color: #fff; */
     transform-style: preserve-3d;
-    width: 400px;
-    height: 100px;
-    /* width: 12cm;
-    height: 3cm; */
+    /* width: 400px;
+    height: 100px; */
+    width: 12cm;
+    height: 3cm;
     text-align: center;
     transform-origin: center;
     position: absolute;
+    overflow: hidden;
 }
+
 .engrave-1 {
-    top: 30.18%;
+    top: 42.18%;
     left: 44.29%;
-    transform: rotateX(-51deg) rotateY(0deg) rotateZ(-31deg);
-    -webkit-transform: rotateX(-51deg) rotateY(0deg) rotateZ(-31deg);
-    -moz-transform: rotateX(-51deg) rotateY(0deg) rotateZ(-31deg);
-    -ms-transform: rotateX(-51deg) rotateY(0deg) rotateZ(-31deg);
-    -o-transform: rotateX(-51deg) rotateY(0deg) rotateZ(-31deg);
+    transform: rotateX(-51deg) rotateY(0deg) rotateZ(-31deg)
+        translate3d(-40px, -20px, 0px) scale3d(80%, 80%, 85%);
+    -webkit-transform: rotateX(-51deg) rotateY(0deg) rotateZ(-31deg)
+        translate3d(-40px, -20px, 0px) scale3d(80%, 80%, 85%);
+    -moz-transform: rotateX(-51deg) rotateY(0deg) rotateZ(-31deg)
+        translate3d(-40px, -20px, 0px) scale3d(80%, 80%, 85%);
+    -ms-transform: rotateX(-51deg) rotateY(0deg) rotateZ(-31deg)
+        translate3d(-40px, -20px, 0px) scale3d(80%, 80%, 85%);
+    -o-transform: rotateX(-51deg) rotateY(0deg) rotateZ(-31deg)
+        translate3d(-40px, -20px, 0px) scale3d(80%, 80%, 85%);
 }
 
 .engrave-2 {
-    top: 46.48%;
-    left: 10.44%;
-    transform: rotateX(39deg) rotateY(0deg) rotateZ(-115deg);
-    -webkit-transform: rotateX(39deg) rotateY(0deg) rotateZ(-115deg);
-    -moz-transform: rotateX(39deg) rotateY(0deg) rotateZ(-115deg);
-    -ms-transform: rotateX(39deg) rotateY(0deg) rotateZ(-115deg);
-    -o-transform: rotateX(39deg) rotateY(0deg) rotateZ(-115deg);
+    top: 53.48%;
+    left: 7.44%;
+    transform: rotateX(34deg) rotateY(0deg) rotateZ(-115deg)
+        translate3d(-25px, 0px, 0px) scale3d(77%, 77%, 80%);
+    -webkit-transform: rotateX(34deg) rotateY(0deg) rotateZ(-115deg)
+        translate3d(-25px, 0px, 0px) scale3d(77%, 77%, 80%);
+    -moz-transform: rotateX(34deg) rotateY(0deg) rotateZ(-115deg)
+        translate3d(-25px, 0px, 0px) scale3d(77%, 77%, 80%);
+    -ms-transform: rotateX(34deg) rotateY(0deg) rotateZ(-115deg)
+        translate3d(-25px, 0px, 0px) scale3d(77%, 77%, 80%);
+    -o-transform: rotateX(34deg) rotateY(0deg) rotateZ(-115deg)
+        translate3d(-25px, 0px, 0px) scale3d(77%, 77%, 80%);
 }
 
 .engrave-3 {
-    bottom: 13.35%;
-    left: 30.82%;
-    transform: rotateX(34deg) rotateY(-6deg) rotateZ(-25deg);
-    -webkit-transform: rotateX(34deg) rotateY(-6deg) rotateZ(-25deg);
-    -moz-transform: rotateX(34deg) rotateY(-6deg) rotateZ(-25deg);
-    -ms-transform: rotateX(34deg) rotateY(-6deg) rotateZ(-25deg);
-    -o-transform: rotateX(34deg) rotateY(-6deg) rotateZ(-25deg);
+    bottom: 14%;
+    left: 27.82%;
+    transform: rotateX(34deg) rotateY(-6deg) rotateZ(-25deg)
+        translate3d(0px, 0px, 0px) scale3d(83%, 85%, 90%);
+    -webkit-transform: rotateX(34deg) rotateY(-6deg) rotateZ(-25deg)
+        translate3d(0px, 0px, 0px) scale3d(83%, 85%, 90%);
+    -moz-transform: rotateX(34deg) rotateY(-6deg) rotateZ(-25deg)
+        translate3d(0px, 0px, 0px) scale3d(83%, 85%, 90%);
+    -ms-transform: rotateX(34deg) rotateY(-6deg) rotateZ(-25deg)
+        translate3d(0px, 0px, 0px) scale3d(83%, 85%, 90%);
+    -o-transform: rotateX(34deg) rotateY(-6deg) rotateZ(-25deg)
+        translate3d(0px, 0px, 0px) scale3d(83%, 85%, 90%);
 }
 
 .engraveText {
@@ -137,6 +154,7 @@ body {
     display: block;
     font-size: 37px;
     line-height: 100px;
+    text-wrap: nowrap;
     /* font-weight: 900; */
 }
 
@@ -157,6 +175,7 @@ body {
     .handle-image {
         height: 35mm;
     }
+
     .content {
         transform: translateY(-50%) scale(0.5);
         left: 15mm;

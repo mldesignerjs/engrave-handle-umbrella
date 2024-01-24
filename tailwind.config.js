@@ -11,7 +11,8 @@ module.exports = {
         extend: {
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+                'gradient-conic':
+                    'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
             },
             boxShadow: {
                 menu: '0px 159px 95px rgba(13,12,34,0.01), 0px 71px 71px rgba(13,12,34,0.02), 0px 18px 39px rgba(13,12,34,0.02), 0px 0px 0px rgba(13,12,34,0.02)',
@@ -30,6 +31,15 @@ module.exports = {
             red: colors.red,
             indigo: colors.indigo,
             yellow: colors.yellow,
+        },
+        container: {
+            padding: {
+                DEFAULT: '1rem',
+                sm: '2rem',
+                lg: '4rem',
+                xl: '5rem',
+                '2xl': '6rem',
+            },
         },
     },
     plugins: [],

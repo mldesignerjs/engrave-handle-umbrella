@@ -16,8 +16,8 @@ function Header(props: HeaderProps) {
     }
 
     return (
-        <header className="w-full fixed bg-white border-b border-gray-100 lg:px-24 max-lg:px-4 z-50">
-            <div className="py-4">
+        <header className="w-full fixed bg-white border-b border-gray-100 z-50">
+            <div className="container mx-auto py-4">
                 <h2>Cảm ơn bạn đã lựa chọn chúng tôi.</h2>
             </div>
         </header>
