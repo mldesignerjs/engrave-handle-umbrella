@@ -86,7 +86,7 @@ export default function Home() {
     }
 
     return (
-        <div className="lg:px-24 max-lg:px-4 lg:pt-20 max-lg:pt-20">
+        <div className="lg:px-24 max-lg:px-4 lg:pt-20 max-lg:pt-20 container mx-auto">
             <h2 className="text-center text-xl" style={engraveFonts[10].style}>
                 Hãy chọn font, kích cỡ chữ để khắc tên lên tay cầm ô dù
             </h2>

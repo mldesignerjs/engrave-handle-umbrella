@@ -93,59 +93,10 @@ body {
 .engraved {
     /* background-color: #fff; */
     transform-style: preserve-3d;
-    /* width: 400px;
-    height: 100px; */
-    width: 12cm;
-    height: 3cm;
     text-align: center;
     transform-origin: center;
     position: absolute;
     overflow: hidden;
-}
-
-.engrave-1 {
-    top: 42.18%;
-    left: 44.29%;
-    transform: rotateX(-51deg) rotateY(0deg) rotateZ(-31deg)
-        translate3d(-40px, -20px, 0px) scale3d(80%, 80%, 85%);
-    -webkit-transform: rotateX(-51deg) rotateY(0deg) rotateZ(-31deg)
-        translate3d(-40px, -20px, 0px) scale3d(80%, 80%, 85%);
-    -moz-transform: rotateX(-51deg) rotateY(0deg) rotateZ(-31deg)
-        translate3d(-40px, -20px, 0px) scale3d(80%, 80%, 85%);
-    -ms-transform: rotateX(-51deg) rotateY(0deg) rotateZ(-31deg)
-        translate3d(-40px, -20px, 0px) scale3d(80%, 80%, 85%);
-    -o-transform: rotateX(-51deg) rotateY(0deg) rotateZ(-31deg)
-        translate3d(-40px, -20px, 0px) scale3d(80%, 80%, 85%);
-}
-
-.engrave-2 {
-    top: 53.48%;
-    left: 7.44%;
-    transform: rotateX(34deg) rotateY(0deg) rotateZ(-115deg)
-        translate3d(-25px, 0px, 0px) scale3d(77%, 77%, 80%);
-    -webkit-transform: rotateX(34deg) rotateY(0deg) rotateZ(-115deg)
-        translate3d(-25px, 0px, 0px) scale3d(77%, 77%, 80%);
-    -moz-transform: rotateX(34deg) rotateY(0deg) rotateZ(-115deg)
-        translate3d(-25px, 0px, 0px) scale3d(77%, 77%, 80%);
-    -ms-transform: rotateX(34deg) rotateY(0deg) rotateZ(-115deg)
-        translate3d(-25px, 0px, 0px) scale3d(77%, 77%, 80%);
-    -o-transform: rotateX(34deg) rotateY(0deg) rotateZ(-115deg)
-        translate3d(-25px, 0px, 0px) scale3d(77%, 77%, 80%);
-}
-
-.engrave-3 {
-    bottom: 14%;
-    left: 27.82%;
-    transform: rotateX(34deg) rotateY(-6deg) rotateZ(-25deg)
-        translate3d(0px, 0px, 0px) scale3d(83%, 85%, 90%);
-    -webkit-transform: rotateX(34deg) rotateY(-6deg) rotateZ(-25deg)
-        translate3d(0px, 0px, 0px) scale3d(83%, 85%, 90%);
-    -moz-transform: rotateX(34deg) rotateY(-6deg) rotateZ(-25deg)
-        translate3d(0px, 0px, 0px) scale3d(83%, 85%, 90%);
-    -ms-transform: rotateX(34deg) rotateY(-6deg) rotateZ(-25deg)
-        translate3d(0px, 0px, 0px) scale3d(83%, 85%, 90%);
-    -o-transform: rotateX(34deg) rotateY(-6deg) rotateZ(-25deg)
-        translate3d(0px, 0px, 0px) scale3d(83%, 85%, 90%);
 }
 
 .engraveText {
@@ -153,7 +104,6 @@ body {
     -webkit-background-clip: text;
     display: block;
     font-size: 37px;
-    line-height: 100px;
     text-wrap: nowrap;
     /* font-weight: 900; */
 }
@@ -176,17 +126,21 @@ body {
         height: 35mm;
     }
 
-    .content {
+    /* .content {
         transform: translateY(-50%) scale(0.5);
         left: 15mm;
         -webkit-transform: translateY(-50%) scale(0.5);
         -moz-transform: translateY(-50%) scale(0.5);
         -ms-transform: translateY(-50%) scale(0.5);
         -o-transform: translateY(-50%) scale(0.5);
-    }
+    } */
 }
 
 /* sm */
+@media (min-width: 640px) {
+}
+
+/* md */
 @media (min-width: 768px) {
     .handle-image {
         height: 52.5mm;
@@ -202,4 +156,22 @@ body {
     .content {
         left: 30mm;
     }
+
+    /* .engrave-1 {
+        top: 40.69%;
+        left: 30.84%;
+        transform: rotateX(-46deg) rotateY(0deg) rotateZ(-29deg) scale(45%);
+        -webkit-transform: rotateX(-46deg) rotateY(0deg) rotateZ(-29deg) scale(45%);
+        -moz-transform: rotateX(-46deg) rotateY(0deg) rotateZ(-29deg) scale(45%);
+        -ms-transform: rotateX(-46deg) rotateY(0deg) rotateZ(-29deg) scale(45%);
+        -o-transform: rotateX(-46deg) rotateY(0deg) rotateZ(-29deg) scale(45%);
+} */
+}
+
+/* xl */
+@media (min-width: 1280px) {
+}
+
+/* 2xl */
+@media (min-width: 1536px) {
 }

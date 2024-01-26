@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { engraveFonts } from '@/constants'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 export default function Engrave() {
     const [name, setName] = useState<string>('Huy Hoàng')
     const [fontSize, setFontSize] = useState<string>('24')
@@ -9,6 +9,10 @@ export default function Engrave() {
     const [fontFamily, setFontFamily] = useState<string>(
         engraveFonts[0].style.fontFamily,
     )
+
+    const [scale1, setScale1] = useState<number>(100)
+
+    const imageRef1 = useRef(null)
     // const [fontSize, setFontSize] = useState<string>('37')
     // Lorem ipsum
 
@@ -29,8 +33,15 @@ export default function Engrave() {
         setFontFamily(engraveFonts[idFont].style.fontFamily)
     }
 
+    useEffect(() => {
+        const widthImg1 = imageRef1?.current?.width || 0
+        // console.log(widthImg1)
+
+        setScale1((widthImg1 / 1344) * 100)
+    }, [imageRef1?.current?.width])
+
     return (
-        <div className="container mx-auto">
+        <div className="container mx-auto py-10">
             <div className="p-4 fixed top-1/4 right-0 z-20 bg-white shadow">
                 <h2 className="text-main font-bold">Tùy chỉnh</h2>
                 <div className="mt-3">
@@ -98,37 +109,93 @@ export default function Engrave() {
                     </select>
                 </div>
             </div>
-            <div className="title text-center text-white relative z-10 top-0 left-1/2 -translate-x-1/2">
-                <p className="text-[60px] max-lg:text-[40px] max-md:text-[30px] max-sm:text-[20px] font-bold uppercase">
+            <div className="title text-center text-white relative top-10 z-10">
+                <p className="2xl:text-[80px] lg:text-[40px] md:text-[30px] sm:text-[20px] text-[20px] font-bold uppercase">
                     Gentleman
                 </p>
-                <h2 className="text-[210px] max-lg:text-[130px] max-md:text-[90px] max-sm:text-[70px] font-bold leading-none -mt-10 max-lg:-mt-8 max-md:-mt-6 max-sm:-mt-4">
+                <h2 className="2xl:text-[250px] lg:text-[130px] md:text-[90px] sm:text-[70px] text-[70px] font-bold leading-none -mt-4 lg:-mt-8 md:-mt-6 sm:-mt-4">
                     G30
                 </h2>
             </div>
-            <div className="-mt-[300px] max-lg:-mt-[180px] max-md:-mt-[140px] max-sm:-mt-[100px]">
+            <div className="2xl:-mt-[300px] xl:-mt-[120px] lg:-mt-[120px] md:-mt-[80px] sm:-mt-[50px] -mt-[50px]">
                 <div className="pic">
                     <Image
+                        ref={imageRef1}
                         src="/g30-banner.jpg"
                         width={1500}
                         height={2000}
                         alt={''}
                         className="w-full"
                     />
-                    {[...Array(3)].map((a, i) => (
-                        <div key={i} className={`engraved engrave-${i + 1}`}>
-                            <span
-                                className="engraveText cn"
-                                style={{
-                                    fontFamily: fontFamily,
-                                    fontSize: `${fontSize}pt`,
-                                    letterSpacing: `${letterSpacing}px`,
-                                }}
-                            >
-                                {name}
-                            </span>
-                        </div>
-                    ))}
+                    <div
+                        className="engraved"
+                        style={{
+                            width: '310px',
+                            height: '77.5px',
+                            lineHeight: '77.5px',
+                            top: '44.8%',
+                            left: '55.74%',
+                            transform: `translate(-50%,-50%) rotateX(-46deg) rotateY(0deg) rotateZ(-29deg) scale(${scale1}%)`,
+                        }}
+                    >
+                        <span
+                            className="engraveText cn"
+                            style={{
+                                fontFamily: fontFamily,
+                                fontSize: `${fontSize}pt`,
+                                letterSpacing: `${letterSpacing}px`,
+                                transform: 'scale(68%)',
+                            }}
+                        >
+                            {name}
+                        </span>
+                    </div>
+                    <div
+                        className="engraved engrave-2"
+                        style={{
+                            width: '296px',
+                            height: '74px',
+                            lineHeight: '74px',
+                            top: '57.15%',
+                            left: '22.3%',
+                            transform: `translate(-50%,-50%) rotateX(34deg) rotateY(0deg) rotateZ(-115deg) scale(${scale1}%)`,
+                        }}
+                    >
+                        <span
+                            className="engraveText cn"
+                            style={{
+                                fontFamily: fontFamily,
+                                fontSize: `${fontSize}pt`,
+                                letterSpacing: `${letterSpacing}px`,
+                                transform: 'scale(66%)',
+                            }}
+                        >
+                            {name}
+                        </span>
+                    </div>
+                    <div
+                        className="engraved"
+                        style={{
+                            width: '324px',
+                            height: '81px',
+                            lineHeight: '81px',
+                            top: '83%',
+                            left: '42.34%',
+                            transform: `translate(-50%,-50%) rotateX(41deg) rotateY(-11deg) rotateZ(-23deg) scale(${scale1}%)`,
+                        }}
+                    >
+                        <span
+                            className="engraveText cn"
+                            style={{
+                                fontFamily: fontFamily,
+                                fontSize: `${fontSize}pt`,
+                                letterSpacing: `${letterSpacing}px`,
+                                transform: 'scale(70%)',
+                            }}
+                        >
+                            {name}
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
