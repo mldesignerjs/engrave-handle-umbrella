@@ -34,11 +34,11 @@ export default function Engrave() {
     }
 
     useEffect(() => {
-        const widthImg1 = imageRef1?.current?.width || 0
+        const elementImg1: any = imageRef1?.current
         // console.log(widthImg1)
 
-        setScale1((widthImg1 / 1344) * 100)
-    }, [imageRef1?.current?.width])
+        setScale1((elementImg1.width / 1344) * 100)
+    }, [])
 
     return (
         <div className="container mx-auto py-10">
