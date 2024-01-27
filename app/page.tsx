@@ -1,10 +1,6 @@
 'use client'
 import { useState } from 'react'
-import {
-    faCircleCheck,
-    faCircleXmark,
-    faPenToSquare,
-} from '@fortawesome/free-solid-svg-icons'
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 import {
     engraveFonts,
     kindHandle,
@@ -15,6 +11,7 @@ import {
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { EditContent } from './EditContent'
+import Modal from '@/components/Modal'
 
 export default function Home() {
     const [lineNumber, setLineNumber] = useState<string>('1')
@@ -23,7 +20,6 @@ export default function Home() {
         umbrellas[0],
     )
     const [handle, setHandle] = useState<handleO>(umbrellas[0].handle[0])
-    const [showEditMode, setShowEditMode] = useState<boolean>(true)
 
     const [text1, setText1] = useState<string>('Tên Của Bạn')
     const [fontSize1, setFontSize1] = useState<string>('22')
@@ -81,35 +77,12 @@ export default function Home() {
         setHandle(nextHandle)
     }
 
-    function handleShowEditMode() {
-        setShowEditMode(!showEditMode)
-    }
-
     return (
         <div className="lg:px-24 max-lg:px-4 lg:pt-20 max-lg:pt-20 container mx-auto">
             <h2 className="text-center text-xl" style={engraveFonts[10].style}>
                 Hãy chọn font, kích cỡ chữ để khắc tên lên tay cầm ô dù
             </h2>
-            <button
-                className="fixed top-[18%] right-0 z-30 w-[50px] h-[50px] bg-white rounded border text-xl"
-                onClick={handleShowEditMode}
-            >
-                {showEditMode ? (
-                    <FontAwesomeIcon
-                        className="text-red-400"
-                        icon={faCircleXmark}
-                    />
-                ) : (
-                    <FontAwesomeIcon
-                        className="text-blue-400"
-                        icon={faPenToSquare}
-                    />
-                )}
-            </button>
-            <div
-                className="fixed top-[18%] right-0 z-20 overflow-y-scroll transition-all rounded bg-white shadow border max-h-[50%]"
-                style={{ width: `${showEditMode ? '350px' : '0'}` }}
-            >
+            <Modal>
                 <div className="p-4">
                     <p className="pr-6">Số dòng chữ:</p>
                     <div className="flex items-center my-4">
@@ -264,7 +237,7 @@ export default function Home() {
                         </>
                     )}
                 </div>
-            </div>
+            </Modal>
             <div className="mt-6">
                 {engraveFonts.map((font, key) => (
                     <div
@@ -280,7 +253,7 @@ export default function Home() {
                                 <img
                                     src={handle.urlImg}
                                     alt=""
-                                    className="w-max min-w-max handle-image"
+                                    className="handle-image"
                                 />
                                 <div className="content">
                                     <span

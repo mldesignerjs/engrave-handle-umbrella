@@ -47,7 +47,7 @@ body {
     color: transparent;
     -webkit-background-clip: text;
     display: block;
-    line-height: 15mm;
+    line-height: 1;
 }
 
 .cn {
@@ -65,19 +65,29 @@ body {
     text-shadow: rgba(255, 255, 255, 0.86) 0px 0px 0px;
 }
 
+.handle-image {
+    height: 35mm;
+    max-width: fit-content;
+}
+
 .content {
-    height: 15mm;
-    position: absolute;
-    top: 50%;
     white-space: nowrap;
     overflow: hidden;
     text-align: center;
+    height: 15mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    transform: translateY(-50%) scale(1);
-    -webkit-transform: translateY(-50%) scale(1);
-    -moz-transform: translateY(-50%) scale(1);
-    -ms-transform: translateY(-50%) scale(1);
-    -o-transform: translateY(-50%) scale(1);
+    position: absolute;
+    top: 50%;
+    left: 15mm;
+    transform: translateY(-50%) scale(0.5);
+    -webkit-transform: translateY(-50%) scale(0.5);
+    -moz-transform: translateY(-50%) scale(0.5);
+    -ms-transform: translateY(-50%) scale(0.5);
+    -o-transform: translateY(-50%) scale(0.5);
     transform-origin: left;
     -webkit-transform-origin: left;
     -moz-transform-origin: left;
@@ -110,23 +120,23 @@ body {
 
 /* max-lg */
 @media not all and (min-width: 1024px) {
-    .content {
+    /* .content {
         transform: translateY(-50%) scale(0.75);
         left: 22.5mm;
         -webkit-transform: translateY(-50%) scale(0.75);
         -moz-transform: translateY(-50%) scale(0.75);
         -ms-transform: translateY(-50%) scale(0.75);
         -o-transform: translateY(-50%) scale(0.75);
-    }
+    } */
 }
 
 /* max-sm */
 @media not all and (min-width: 640px) {
-    .handle-image {
+    /* .handle-image {
         height: 35mm;
     }
 
-    /* .content {
+    .content {
         transform: translateY(-50%) scale(0.5);
         left: 15mm;
         -webkit-transform: translateY(-50%) scale(0.5);
@@ -138,13 +148,22 @@ body {
 
 /* sm */
 @media (min-width: 640px) {
+    .handle-image {
+        height: 52.5mm;
+    }
+
+    .content {
+        left: 22.5mm;
+        transform: translateY(-50%) scale(0.75);
+        -webkit-transform: translateY(-50%) scale(0.75);
+        -moz-transform: translateY(-50%) scale(0.75);
+        -ms-transform: translateY(-50%) scale(0.75);
+        -o-transform: translateY(-50%) scale(0.75);
+    }
 }
 
 /* md */
 @media (min-width: 768px) {
-    .handle-image {
-        height: 52.5mm;
-    }
 }
 
 /* lg */
@@ -155,17 +174,12 @@ body {
 
     .content {
         left: 30mm;
+        transform: translateY(-50%) scale(1);
+        -webkit-transform: translateY(-50%) scale(1);
+        -moz-transform: translateY(-50%) scale(1);
+        -ms-transform: translateY(-50%) scale(1);
+        -o-transform: translateY(-50%) scale(1);
     }
-
-    /* .engrave-1 {
-        top: 40.69%;
-        left: 30.84%;
-        transform: rotateX(-46deg) rotateY(0deg) rotateZ(-29deg) scale(45%);
-        -webkit-transform: rotateX(-46deg) rotateY(0deg) rotateZ(-29deg) scale(45%);
-        -moz-transform: rotateX(-46deg) rotateY(0deg) rotateZ(-29deg) scale(45%);
-        -ms-transform: rotateX(-46deg) rotateY(0deg) rotateZ(-29deg) scale(45%);
-        -o-transform: rotateX(-46deg) rotateY(0deg) rotateZ(-29deg) scale(45%);
-} */
 }
 
 /* xl */
