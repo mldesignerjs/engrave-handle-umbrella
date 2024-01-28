@@ -118,6 +118,45 @@ body {
     /* font-weight: 900; */
 }
 
+/* Selection */
+.select {
+    position: relative;
+}
+
+.select-button {
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.options.open {
+    display: block;
+}
+
+.option {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: #e0e0e0;
+}
+
 /* max-lg */
 @media not all and (min-width: 1024px) {
     /* .content {

@@ -1,8 +1,10 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { engraveFonts } from '@/constants'
+import { engraveFonts, optionFonts } from '@/constants'
 import Modal from '@/components/Modal'
+import Select from '@/components/Select'
+
 export default function Engrave() {
     const [name, setName] = useState<string>('Huy Hoàng')
     const [fontSize, setFontSize] = useState<string>('24')
@@ -12,13 +14,29 @@ export default function Engrave() {
     )
 
     const [scale1, setScale1] = useState<number>(100)
+    const [selectedOption, setSelectedOption] = useState<optionFonts>({
+        value: engraveFonts[0],
+        label: `1 - ${name}`,
+    })
+
+    const fontsArray: optionFonts[] = engraveFonts.map((font, index) => ({
+        value: font,
+        label: `${index + 1} - ${name}`,
+    }))
+
+    const [fonts, setFonts] = useState<optionFonts[]>(fontsArray)
 
     const imageRef1 = useRef(null)
     // const [fontSize, setFontSize] = useState<string>('37')
-    // Lorem ipsum
 
     function handleChangeName(value: string) {
         setName(value)
+        const Fontss: optionFonts[] = engraveFonts.map((font, index) => ({
+            value: font,
+            label: `${index + 1} - ${value}`,
+        }))
+
+        console.log(Fontss)
     }
 
     function handleChangeFontSize(value: string) {
@@ -32,6 +50,10 @@ export default function Engrave() {
     function handleChangeFontFamily(value: string) {
         const idFont = parseInt(value)
         setFontFamily(engraveFonts[idFont].style.fontFamily)
+    }
+
+    const handleSelectChange = (option: optionFonts) => {
+        setSelectedOption(option)
     }
 
     useEffect(() => {
@@ -93,7 +115,12 @@ export default function Engrave() {
                     </div>
                     <div className="mt-3">
                         <span className="text-sm">Font:</span>
-                        <select
+                        <Select
+                            options={fonts}
+                            defaultObject={selectedOption}
+                            onChange={handleSelectChange}
+                        />
+                        {/* <select
                             name="fontFamily"
                             className="text-lg px-4"
                             style={{ fontFamily: fontFamily }}
@@ -101,17 +128,17 @@ export default function Engrave() {
                                 handleChangeFontFamily(e.target.value)
                             }
                         >
-                            {engraveFonts.map((fonts, index) => (
+                            {engraveFonts.map((font, index) => (
                                 <option
                                     key={index}
                                     value={index}
                                     className="py-2"
-                                    style={fonts.style}
+                                    style={font.style}
                                 >
                                     {index + 1} - {name}
                                 </option>
                             ))}
-                        </select>
+                        </select> */}
                     </div>
                 </div>
             </Modal>
@@ -148,7 +175,8 @@ export default function Engrave() {
                         <span
                             className="engraveText cn"
                             style={{
-                                fontFamily: fontFamily,
+                                fontFamily:
+                                    selectedOption.value.style.fontFamily,
                                 fontSize: `${fontSize}pt`,
                                 letterSpacing: `${letterSpacing}px`,
                                 transform: 'scale(68%)',
@@ -171,7 +199,8 @@ export default function Engrave() {
                         <span
                             className="engraveText cn"
                             style={{
-                                fontFamily: fontFamily,
+                                fontFamily:
+                                    selectedOption.value.style.fontFamily,
                                 fontSize: `${fontSize}pt`,
                                 letterSpacing: `${letterSpacing}px`,
                                 transform: 'scale(66%)',
@@ -194,7 +223,8 @@ export default function Engrave() {
                         <span
                             className="engraveText cn"
                             style={{
-                                fontFamily: fontFamily,
+                                fontFamily:
+                                    selectedOption.value.style.fontFamily,
                                 fontSize: `${fontSize}pt`,
                                 letterSpacing: `${letterSpacing}px`,
                                 transform: 'scale(70%)',

@@ -16,7 +16,10 @@ export type umbrellaO = {
     handle: handleA
 }
 export type umbrellaA = umbrellaO[]
-
+export type optionFonts = {
+    value: { className: string; style: { fontFamily: string } }
+    label: string
+}
 export const nameSite = 'MLD'
 export const logo = '/logo.png'
 
