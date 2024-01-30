@@ -17,6 +17,7 @@ export type umbrellaO = {
 }
 export type umbrellaA = umbrellaO[]
 export type optionFonts = {
+    id: number
     value: { className: string; style: { fontFamily: string } }
     label: string
 }

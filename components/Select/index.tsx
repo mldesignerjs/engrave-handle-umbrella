@@ -30,7 +30,7 @@ const Select: React.FC<SelectProps> = ({
                 onClick={handleButtonClick}
                 style={defaultObject.value.style}
             >
-                {defaultObject.label}
+                {`${defaultObject.id + 1} - ${defaultObject.label}`}
             </button>
             <ul className={`options ${isOpen ? 'open' : ''}`}>
                 {options.map((option, index) => (
@@ -40,7 +40,7 @@ const Select: React.FC<SelectProps> = ({
                         onClick={() => handleOptionClick(option)}
                         style={option.value.style}
                     >
-                        {option.label}
+                        {option.id} - {option.label}
                     </li>
                 ))}
             </ul>

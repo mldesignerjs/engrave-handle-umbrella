@@ -46,23 +46,26 @@ body {
 .engrave {
     color: transparent;
     -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
     display: block;
     line-height: 1;
 }
 
 .cn {
-    background-color: #333;
-    text-shadow: rgba(90, 54, 19, 0.86) 0px 0px 0px;
+    background-color: #000;
+    /* text-shadow: rgba(90, 54, 19, 0.86) 0px 0px 0px; */
+    text-shadow: rgb(194 115 48 / 25%) 1px 0px 1px;
 }
 
 .tm {
-    background-color: #ffd900;
-    text-shadow: rgba(235, 197, 31, 0.86) 0px 0px 0px;
+    background-color: #000;
+    text-shadow: rgb(255 207 0) 1px -1px 0px;
 }
 
 .nhua {
-    background-color: #fff;
-    text-shadow: rgba(255, 255, 255, 0.86) 0px 0px 0px;
+    background-color: #000000c2;
+    text-shadow: rgba(255, 255, 255) 0px 1px 0px;
 }
 
 .handle-image {
@@ -102,6 +105,9 @@ body {
 
 .engraved {
     /* background-color: #fff; */
+    width: 12cm;
+    height: 3cm;
+    line-height: 3cm;
     transform-style: preserve-3d;
     text-align: center;
     transform-origin: center;
@@ -112,10 +118,10 @@ body {
 .engraveText {
     color: transparent;
     -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
     display: block;
-    font-size: 37px;
     text-wrap: nowrap;
-    /* font-weight: 900; */
 }
 
 /* Selection */
