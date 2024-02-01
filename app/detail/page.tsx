@@ -4,19 +4,28 @@ import Image from 'next/image'
 import { engraveFonts, optionFonts } from '@/constants'
 import Modal from '@/components/Modal'
 import Select from '@/components/Select'
+import { useSearchParams } from 'next/navigation'
 
-export default function Engrave() {
-    const [name, setName] = useState<string>('Huy Hoàng')
-    const [fontSize, setFontSize] = useState<string>('30')
-    const [letterSpacing, setLetterSpacing] = useState<string>('0')
+export default function DetailEngrave() {
+    const searchParam = useSearchParams()
+    const kindUmbrella: string = searchParam.get('type') || 'g30'
+    const text: string = searchParam.get('text') || 'Tên Của Bạn'
+    const indexFont: string = searchParam.get('font') || '0'
+    const indexFontInt: number = parseInt(indexFont)
+    const size: string = searchParam.get('size') || '22'
+    const spacing: string = searchParam.get('spacing') || '0'
+
+    const [name, setName] = useState<string>(text)
+    const [fontSize, setFontSize] = useState<string>(size)
+    const [letterSpacing, setLetterSpacing] = useState<string>(spacing)
     const [fontFamily, setFontFamily] = useState<string>(
-        engraveFonts[0].style.fontFamily,
+        engraveFonts[indexFontInt].style.fontFamily,
     )
 
     const [scale1, setScale1] = useState<number>(100)
     const [selectedOption, setSelectedOption] = useState<optionFonts>({
-        id: 1,
-        value: engraveFonts[0],
+        id: indexFontInt + 1,
+        value: engraveFonts[indexFontInt],
         label: name,
     })
 
@@ -30,32 +39,32 @@ export default function Engrave() {
 
     const imageRef1 = useRef(null)
 
-    function handleChangeName(value: string) {
-        setName(value)
-        const fontss: optionFonts[] = fontsArray.map((font, index) => ({
-            ...font,
-            label: value,
-        }))
-        setFonts(fontss)
-        setSelectedOption({ ...selectedOption, label: value })
-    }
+    // function handleChangeName(value: string) {
+    //     setName(value)
+    //     const fontss: optionFonts[] = fontsArray.map((font, index) => ({
+    //         ...font,
+    //         label: value,
+    //     }))
+    //     setFonts(fontss)
+    //     setSelectedOption({ ...selectedOption, label: value })
+    // }
 
-    function handleChangeFontSize(value: string) {
-        setFontSize(value)
-    }
+    // function handleChangeFontSize(value: string) {
+    //     setFontSize(value)
+    // }
 
-    function handleChangeLetterSpacing(value: string) {
-        setLetterSpacing(value)
-    }
+    // function handleChangeLetterSpacing(value: string) {
+    //     setLetterSpacing(value)
+    // }
 
-    function handleChangeFontFamily(value: string) {
-        const idFont = parseInt(value)
-        setFontFamily(engraveFonts[idFont].style.fontFamily)
-    }
+    // function handleChangeFontFamily(value: string) {
+    //     const idFont = parseInt(value)
+    //     setFontFamily(engraveFonts[idFont].style.fontFamily)
+    // }
 
-    const handleSelectChange = (option: optionFonts) => {
-        setSelectedOption(option)
-    }
+    // const handleSelectChange = (option: optionFonts) => {
+    //     setSelectedOption(option)
+    // }
 
     useEffect(() => {
         const elementImg1: any = imageRef1?.current
@@ -65,7 +74,7 @@ export default function Engrave() {
 
     return (
         <div className="container mx-auto py-10">
-            <Modal>
+            {/* <Modal>
                 <div className="p-4">
                     <h2 className="text-main font-bold">Tùy chỉnh</h2>
                     <div className="mt-3">
@@ -123,7 +132,7 @@ export default function Engrave() {
                         />
                     </div>
                 </div>
-            </Modal>
+            </Modal> */}
 
             <div className="title text-center text-white relative top-10 z-10">
                 <p className="2xl:text-[80px] lg:text-[40px] md:text-[30px] sm:text-[20px] text-[20px] font-bold uppercase">

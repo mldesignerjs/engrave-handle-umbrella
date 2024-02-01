@@ -12,6 +12,7 @@ export type handleA = handleO[]
 export type umbrellaO = {
     id: number
     name: string
+    sku: string
     sizeHandle: number
     handle: handleA
 }
@@ -134,12 +135,17 @@ export const footerMenuList = []
 export const sizeHandle = [
     {
         name: '8 cm',
-        value: 267,
+        value: 8,
         // value: 8,
     },
     {
         name: '12 cm',
-        value: 340,
+        value: 12,
+        // value: 12,
+    },
+    {
+        name: '5.7 cm',
+        value: 5.7,
         // value: 12,
     },
 ]
@@ -163,20 +169,23 @@ export const umbrellas: umbrellaA = [
     {
         id: 0,
         name: 'Ô tự động',
-        sizeHandle: 215.42,
+        sku: 'otd',
+        sizeHandle: 5.7,
         // sizeHandle: 5.5,
         handle: [{ value: 'nhua', urlImg: 'o-td.jpg', id: 0 }],
     },
     {
         id: 1,
         name: 'Chagoi',
-        sizeHandle: 302.36,
+        sizeHandle: 8,
+        sku: 'chagoi',
         handle: [{ value: 'tm', urlImg: 'chagoi-den.jpg', id: 0 }],
     },
     {
         id: 2,
         name: 'G27',
-        sizeHandle: 453.53,
+        sku: 'g27',
+        sizeHandle: 12,
         handle: [
             { value: 'cn', urlImg: 'g27-cn.jpg', id: 0 },
             { value: 'tm', urlImg: 'g27-trac.jpg', id: 1 },
@@ -185,7 +194,8 @@ export const umbrellas: umbrellaA = [
     {
         id: 3,
         name: 'G30',
-        sizeHandle: 453.53,
+        sku: 'g30',
+        sizeHandle: 12,
         handle: [
             { value: 'cn', urlImg: 'g30-cn.jpg', id: 0 },
             { value: 'tm', urlImg: 'g30-trac.jpg', id: 1 },

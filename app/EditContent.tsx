@@ -24,9 +24,7 @@ export function EditContent(props: IEditContentProps) {
                 <label className="block" htmlFor="sizeEngrave">
                     Kích cỡ:
                 </label>
-                <span className="font-bold text-main absolute left-1/2 -translate-x-1/2">
-                    {props.fontSize}
-                </span>
+                <span className="font-bold text-main absolute left-1/2 -translate-x-1/2">{props.fontSize}</span>
                 <input
                     type="range"
                     name="sizeEngrave"
@@ -42,9 +40,7 @@ export function EditContent(props: IEditContentProps) {
                 <label className="block" htmlFor="letterSpacing">
                     Khoảng cách chữ:
                 </label>
-                <span className="font-bold text-main absolute left-1/2 -translate-x-1/2">
-                    {props.letterSpacing}
-                </span>
+                <span className="font-bold text-main absolute left-1/2 -translate-x-1/2">{props.letterSpacing}</span>
 
                 <input
                     type="range"
@@ -54,9 +50,7 @@ export function EditContent(props: IEditContentProps) {
                     value={props.letterSpacing}
                     min={0}
                     max={10}
-                    onChange={(e) =>
-                        props.onChangeLetterSpacing(e.target.value)
-                    }
+                    onChange={(e) => props.onChangeLetterSpacing(e.target.value)}
                 />
             </div>
         </>

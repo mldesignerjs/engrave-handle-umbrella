@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { useQueryState } from 'nuqs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -18,26 +18,17 @@ import { useSearchParams } from 'next/navigation'
 
 export default function Home() {
     const searchParam = useSearchParams()
-    const kindUmbrella: string = searchParam.get('type') || 'g30'
-    const nameP: string = searchParam.get('name') || 'Tên Của Bạn'
-    const sizeP: string = searchParam.get('size') || '22'
-    const spacingP: string = searchParam.get('spacing') || '0'
-    const nameP2: string = searchParam.get('name2') || '0888.888.888'
-    const sizeP2: string = searchParam.get('size2') || '22'
-    const spacingP2: string = searchParam.get('spacing2') || '0'
-    const lineP: string = searchParam.get('line') || '0'
-    const distanceP: string = searchParam.get('dis') || '0'
-
-    const [type, setType] = useQueryState('type')
-    const [handleP, setHandleP] = useQueryState('handle')
     const [name, setName] = useQueryState('name')
+    const [type, setType] = useQueryState('type')
     const [size, setSize] = useQueryState('size')
     const [spacing, setSpacing] = useQueryState('spacing')
-    const [name2, setName2] = useQueryState('name2')
-    const [size2, setSize2] = useQueryState('size2')
-    const [spacing2, setSpacing2] = useQueryState('spacing2')
-    const [line, setLine] = useQueryState('line')
-    const [distance, setDistance] = useQueryState('dis')
+
+    const kindUmbrella: string = searchParam.get('type') || 'g30'
+    const getName: string = searchParam.get('name') || 'Tên Của Bạn'
+    const indexFont: string = searchParam.get('font') || '0'
+    const indexFontInt: number = parseInt(indexFont)
+    const getSize: string = searchParam.get('size') || '22'
+    const getSpacing: string = searchParam.get('spacing') || '0'
 
     const [lineNumber, setLineNumber] = useState<string>('1')
     const [lineHeight, setLineHeight] = useState<string>('0')
@@ -46,9 +37,9 @@ export default function Home() {
     )
     const [handle, setHandle] = useState<handleO>(umbrellas[0].handle[0])
 
-    const [text1, setText1] = useState<string>(nameP)
-    const [fontSize1, setFontSize1] = useState<string>(sizeP)
-    const [letterSpacing1, setLetterSpacing1] = useState<string>(spacingP)
+    const [text1, setText1] = useState<string>('Tên Của Bạn')
+    const [fontSize1, setFontSize1] = useState<string>('22')
+    const [letterSpacing1, setLetterSpacing1] = useState<string>('0')
 
     const [text2, setText2] = useState<string>('0888.888.888')
     const [fontSize2, setFontSize2] = useState<string>('22')
@@ -91,14 +82,11 @@ export default function Home() {
 
     function handleChangeUmbrella(value: string) {
         const index: number = Number(value)
-        const nextUmbrella: any = umbrellas.find(
+        let nextUmbrella: any = umbrellas.find(
             (umbrella) => umbrella.id === index,
         )
         setCurrentUmbrella(nextUmbrella)
         setHandle(nextUmbrella.handle[0])
-        setHandleP(nextUmbrella.handle[0].value)
-
-        setType(nextUmbrella.sku)
     }
 
     function handleChangeKindWood(value: string) {
@@ -106,16 +94,7 @@ export default function Home() {
             (umbrella) => umbrella.value === value,
         )
         setHandle(nextHandle)
-        setHandleP(nextHandle.value)
     }
-
-    useEffect(() => {
-        setName(text1)
-        setType(currentUmbrella.sku)
-        setHandleP(handle.value)
-        setSize(fontSize1)
-        setSpacing(letterSpacing1)
-    }, [])
 
     return (
         <div className="lg:px-24 max-lg:px-4 lg:pt-20 max-lg:pt-20 container mx-auto">
@@ -312,7 +291,7 @@ export default function Home() {
                                         <span
                                             className={`engrave leading-none block ${handle.value}`}
                                             style={{
-                                                width: `${currentUmbrella.sizeHandle}cm`,
+                                                width: `${currentUmbrella.sizeHandle}px`,
                                                 letterSpacing: `${letterSpacing1}px`,
                                                 fontSize: `${fontSize1}pt`,
                                             }}
@@ -323,7 +302,7 @@ export default function Home() {
                                             <span
                                                 className={`engrave ${handle.value}`}
                                                 style={{
-                                                    width: `${currentUmbrella.sizeHandle}cm`,
+                                                    width: `${currentUmbrella.sizeHandle}px`,
                                                     letterSpacing: `${letterSpacing2}px`,
                                                     fontSize: `${fontSize2}pt`,
                                                     marginTop: `${lineHeight}px`,
