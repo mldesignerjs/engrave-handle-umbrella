@@ -1,70 +1,27 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { engraveFonts, optionFonts } from '@/constants'
-import Modal from '@/components/Modal'
-import Select from '@/components/Select'
+import { engraveFonts } from '@/constants'
 import { useSearchParams } from 'next/navigation'
 
 export default function DetailEngrave() {
     const searchParam = useSearchParams()
     const kindUmbrella: string = searchParam.get('type') || 'g30'
-    const text: string = searchParam.get('text') || 'Tên Của Bạn'
     const indexFont: string = searchParam.get('font') || '0'
     const indexFontInt: number = parseInt(indexFont)
+    const text: string = searchParam.get('text') || 'Tên Của Bạn'
     const size: string = searchParam.get('size') || '22'
     const spacing: string = searchParam.get('spacing') || '0'
 
-    const [name, setName] = useState<string>(text)
-    const [fontSize, setFontSize] = useState<string>(size)
-    const [letterSpacing, setLetterSpacing] = useState<string>(spacing)
-    const [fontFamily, setFontFamily] = useState<string>(
-        engraveFonts[indexFontInt].style.fontFamily,
-    )
+    const text2: string = searchParam.get('text2') || '0888.888.888'
+    const size2: string = searchParam.get('size2') || '22'
+    const spacing2: string = searchParam.get('spacing2') || '0'
+    const dis: string = searchParam.get('dis') || '0'
+    const line: string = searchParam.get('line') || '1'
 
     const [scale1, setScale1] = useState<number>(100)
-    const [selectedOption, setSelectedOption] = useState<optionFonts>({
-        id: indexFontInt + 1,
-        value: engraveFonts[indexFontInt],
-        label: name,
-    })
-
-    const fontsArray: optionFonts[] = engraveFonts.map((font, index) => ({
-        id: index,
-        value: font,
-        label: name,
-    }))
-
-    const [fonts, setFonts] = useState<optionFonts[]>(fontsArray)
 
     const imageRef1 = useRef(null)
-
-    // function handleChangeName(value: string) {
-    //     setName(value)
-    //     const fontss: optionFonts[] = fontsArray.map((font, index) => ({
-    //         ...font,
-    //         label: value,
-    //     }))
-    //     setFonts(fontss)
-    //     setSelectedOption({ ...selectedOption, label: value })
-    // }
-
-    // function handleChangeFontSize(value: string) {
-    //     setFontSize(value)
-    // }
-
-    // function handleChangeLetterSpacing(value: string) {
-    //     setLetterSpacing(value)
-    // }
-
-    // function handleChangeFontFamily(value: string) {
-    //     const idFont = parseInt(value)
-    //     setFontFamily(engraveFonts[idFont].style.fontFamily)
-    // }
-
-    // const handleSelectChange = (option: optionFonts) => {
-    //     setSelectedOption(option)
-    // }
 
     useEffect(() => {
         const elementImg1: any = imageRef1?.current
@@ -74,66 +31,6 @@ export default function DetailEngrave() {
 
     return (
         <div className="container mx-auto py-10">
-            {/* <Modal>
-                <div className="p-4">
-                    <h2 className="text-main font-bold">Tùy chỉnh</h2>
-                    <div className="mt-3">
-                        <p className="text-sm">Tên:</p>
-                        <input
-                            type="text"
-                            name="contentEngrave"
-                            className="w-full py-2 px-2 rounded border bg-gray-100 text-main font-bold"
-                            placeholder="Nhập nội dung bạn muốn khắc"
-                            onChange={(e) => handleChangeName(e.target.value)}
-                        />
-                    </div>
-                    <div className="mt-3 relative">
-                        <p className="text-sm">Kích cỡ:</p>
-                        <span className="text-sm font-bold text-main absolute left-1/2 top-0 -translate-x-1/2">
-                            {fontSize}
-                        </span>
-                        <input
-                            type="range"
-                            name="sizeEngrave"
-                            className="rounded w-full mt-2"
-                            placeholder=""
-                            value={fontSize}
-                            min={10}
-                            max={50}
-                            onChange={(e) =>
-                                handleChangeFontSize(e.target.value)
-                            }
-                        />
-                    </div>
-                    <div className="mt-3 relative">
-                        <p className="text-sm">Khoảng cách:</p>
-                        <span className="text-sm font-bold text-main absolute left-1/2 top-0 -translate-x-1/2">
-                            {letterSpacing}
-                        </span>
-                        <input
-                            type="range"
-                            name="sizeEngrave"
-                            className="rounded w-full mt-2"
-                            placeholder=""
-                            value={letterSpacing}
-                            min={0}
-                            max={10}
-                            onChange={(e) =>
-                                handleChangeLetterSpacing(e.target.value)
-                            }
-                        />
-                    </div>
-                    <div className="mt-3">
-                        <span className="text-sm">Font:</span>
-                        <Select
-                            options={fonts}
-                            defaultObject={selectedOption}
-                            onChange={handleSelectChange}
-                        />
-                    </div>
-                </div>
-            </Modal> */}
-
             <div className="title text-center text-white relative top-10 z-10">
                 <p className="2xl:text-[80px] lg:text-[40px] md:text-[30px] sm:text-[20px] text-[20px] font-bold uppercase">
                     Gentleman
@@ -166,13 +63,28 @@ export default function DetailEngrave() {
                             className="engraveText cn"
                             style={{
                                 fontFamily:
-                                    selectedOption.value.style.fontFamily,
-                                fontSize: `${fontSize}pt`,
-                                letterSpacing: `${letterSpacing}px`,
+                                    engraveFonts[indexFontInt].style.fontFamily,
+                                fontSize: `${size}pt`,
+                                letterSpacing: `${spacing}px`,
                             }}
                         >
-                            {name}
+                            {text}
                         </span>
+                        {line === '2' && (
+                            <span
+                                className="engraveText cn"
+                                style={{
+                                    fontFamily:
+                                        engraveFonts[indexFontInt].style
+                                            .fontFamily,
+                                    fontSize: `${size2}pt`,
+                                    letterSpacing: `${spacing2}px`,
+                                    marginTop: `${dis}px`,
+                                }}
+                            >
+                                {text2}
+                            </span>
+                        )}
                     </div>
                     <div
                         className="engraved"
@@ -188,13 +100,28 @@ export default function DetailEngrave() {
                             className="engraveText cn"
                             style={{
                                 fontFamily:
-                                    selectedOption.value.style.fontFamily,
-                                fontSize: `${fontSize}pt`,
-                                letterSpacing: `${letterSpacing}px`,
+                                    engraveFonts[indexFontInt].style.fontFamily,
+                                fontSize: `${size}pt`,
+                                letterSpacing: `${spacing}px`,
                             }}
                         >
-                            {name}
+                            {text}
                         </span>
+                        {line === '2' && (
+                            <span
+                                className="engraveText cn"
+                                style={{
+                                    fontFamily:
+                                        engraveFonts[indexFontInt].style
+                                            .fontFamily,
+                                    fontSize: `${size2}pt`,
+                                    letterSpacing: `${spacing2}px`,
+                                    marginTop: `${dis}px`,
+                                }}
+                            >
+                                {text2}
+                            </span>
+                        )}
                     </div>
                     <div
                         className="engraved"
@@ -210,13 +137,28 @@ export default function DetailEngrave() {
                             className="engraveText cn"
                             style={{
                                 fontFamily:
-                                    selectedOption.value.style.fontFamily,
-                                fontSize: `${fontSize}pt`,
-                                letterSpacing: `${letterSpacing}px`,
+                                    engraveFonts[indexFontInt].style.fontFamily,
+                                fontSize: `${size}pt`,
+                                letterSpacing: `${spacing}px`,
                             }}
                         >
-                            {name}
+                            {text}
                         </span>
+                        {line === '2' && (
+                            <span
+                                className="engraveText cn"
+                                style={{
+                                    fontFamily:
+                                        engraveFonts[indexFontInt].style
+                                            .fontFamily,
+                                    fontSize: `${size2}pt`,
+                                    letterSpacing: `${spacing2}px`,
+                                    marginTop: `${dis}px`,
+                                }}
+                            >
+                                {text2}
+                            </span>
+                        )}
                     </div>
                 </div>
                 <div className="pic">
@@ -242,13 +184,28 @@ export default function DetailEngrave() {
                             className="engraveText cn"
                             style={{
                                 fontFamily:
-                                    selectedOption.value.style.fontFamily,
-                                fontSize: `${fontSize}pt`,
-                                letterSpacing: `${letterSpacing}px`,
+                                    engraveFonts[indexFontInt].style.fontFamily,
+                                fontSize: `${size}pt`,
+                                letterSpacing: `${spacing}px`,
                             }}
                         >
-                            {name}
+                            {text}
                         </span>
+                        {line === '2' && (
+                            <span
+                                className="engraveText cn"
+                                style={{
+                                    fontFamily:
+                                        engraveFonts[indexFontInt].style
+                                            .fontFamily,
+                                    fontSize: `${size2}pt`,
+                                    letterSpacing: `${spacing2}px`,
+                                    marginTop: `${dis}px`,
+                                }}
+                            >
+                                {text2}
+                            </span>
+                        )}
                     </div>
                 </div>
                 <div className="pic">
@@ -274,13 +231,28 @@ export default function DetailEngrave() {
                             className="engraveText cn"
                             style={{
                                 fontFamily:
-                                    selectedOption.value.style.fontFamily,
-                                fontSize: `${fontSize}pt`,
-                                letterSpacing: `${letterSpacing}px`,
+                                    engraveFonts[indexFontInt].style.fontFamily,
+                                fontSize: `${size}pt`,
+                                letterSpacing: `${spacing}px`,
                             }}
                         >
-                            {name}
+                            {text}
                         </span>
+                        {line === '2' && (
+                            <span
+                                className="engraveText cn"
+                                style={{
+                                    fontFamily:
+                                        engraveFonts[indexFontInt].style
+                                            .fontFamily,
+                                    fontSize: `${size2}pt`,
+                                    letterSpacing: `${spacing2}px`,
+                                    marginTop: `${dis}px`,
+                                }}
+                            >
+                                {text2}
+                            </span>
+                        )}
                     </div>
                     <div
                         className="engraved"
@@ -296,13 +268,28 @@ export default function DetailEngrave() {
                             className="engraveText tm"
                             style={{
                                 fontFamily:
-                                    selectedOption.value.style.fontFamily,
-                                fontSize: `${fontSize}pt`,
-                                letterSpacing: `${letterSpacing}px`,
+                                    engraveFonts[indexFontInt].style.fontFamily,
+                                fontSize: `${size}pt`,
+                                letterSpacing: `${spacing}px`,
                             }}
                         >
-                            {name}
+                            {text}
                         </span>
+                        {line === '2' && (
+                            <span
+                                className="engraveText tm"
+                                style={{
+                                    fontFamily:
+                                        engraveFonts[indexFontInt].style
+                                            .fontFamily,
+                                    fontSize: `${size2}pt`,
+                                    letterSpacing: `${spacing2}px`,
+                                    marginTop: `${dis}px`,
+                                }}
+                            >
+                                {text2}
+                            </span>
+                        )}
                     </div>
                     <div
                         className="engraved"
@@ -318,13 +305,28 @@ export default function DetailEngrave() {
                             className="engraveText tm"
                             style={{
                                 fontFamily:
-                                    selectedOption.value.style.fontFamily,
-                                fontSize: `${fontSize}pt`,
-                                letterSpacing: `${letterSpacing}px`,
+                                    engraveFonts[indexFontInt].style.fontFamily,
+                                fontSize: `${size}pt`,
+                                letterSpacing: `${spacing}px`,
                             }}
                         >
-                            {name}
+                            {text}
                         </span>
+                        {line === '2' && (
+                            <span
+                                className="engraveText tm"
+                                style={{
+                                    fontFamily:
+                                        engraveFonts[indexFontInt].style
+                                            .fontFamily,
+                                    fontSize: `${size2}pt`,
+                                    letterSpacing: `${spacing2}px`,
+                                    marginTop: `${dis}px`,
+                                }}
+                            >
+                                {text2}
+                            </span>
+                        )}
                     </div>
                 </div>
                 {[...Array(3)].map((a, i) => (

@@ -19,28 +19,34 @@ import { useSearchParams } from 'next/navigation'
 export default function Home() {
     const searchParam = useSearchParams()
     const kindUmbrella: string = searchParam.get('type') || 'g30'
+    const lineP: string = searchParam.get('line') || '0'
+
     const nameP: string = searchParam.get('name') || 'Tên Của Bạn'
     const sizeP: string = searchParam.get('size') || '22'
     const spacingP: string = searchParam.get('spacing') || '0'
+
     const nameP2: string = searchParam.get('name2') || '0888.888.888'
     const sizeP2: string = searchParam.get('size2') || '22'
     const spacingP2: string = searchParam.get('spacing2') || '0'
-    const lineP: string = searchParam.get('line') || '0'
+
     const distanceP: string = searchParam.get('dis') || '0'
 
     const [type, setType] = useQueryState('type')
     const [handleP, setHandleP] = useQueryState('handle')
+    const [line, setLine] = useQueryState('line')
+
     const [name, setName] = useQueryState('name')
     const [size, setSize] = useQueryState('size')
     const [spacing, setSpacing] = useQueryState('spacing')
+
     const [name2, setName2] = useQueryState('name2')
     const [size2, setSize2] = useQueryState('size2')
     const [spacing2, setSpacing2] = useQueryState('spacing2')
-    const [line, setLine] = useQueryState('line')
+
     const [distance, setDistance] = useQueryState('dis')
 
-    const [lineNumber, setLineNumber] = useState<string>('1')
-    const [lineHeight, setLineHeight] = useState<string>('0')
+    const [lineNumber, setLineNumber] = useState<string>(lineP)
+    const [lineHeight, setLineHeight] = useState<string>(distanceP)
     const [currentUmbrella, setCurrentUmbrella] = useState<umbrellaO>(
         umbrellas[0],
     )
@@ -50,16 +56,18 @@ export default function Home() {
     const [fontSize1, setFontSize1] = useState<string>(sizeP)
     const [letterSpacing1, setLetterSpacing1] = useState<string>(spacingP)
 
-    const [text2, setText2] = useState<string>('0888.888.888')
-    const [fontSize2, setFontSize2] = useState<string>('22')
-    const [letterSpacing2, setLetterSpacing2] = useState<string>('0')
+    const [text2, setText2] = useState<string>(nameP2)
+    const [fontSize2, setFontSize2] = useState<string>(sizeP2)
+    const [letterSpacing2, setLetterSpacing2] = useState<string>(spacingP2)
 
     function handleChangeLineNumber(value: string) {
         setLineNumber(value)
+        setLine(value)
     }
 
     function handleChangeLineHeight(value: string) {
         setLineHeight(value)
+        setDistance(value)
     }
 
     function handleChangeContent1(value: string) {
@@ -79,14 +87,17 @@ export default function Home() {
 
     function handleChangeContent2(value: string) {
         setText2(value)
+        setName2(value)
     }
 
     function handleChangeFontSize2(value: string) {
         setFontSize2(value)
+        setSize2(value)
     }
 
     function handleChangeLetterSpacing2(value: string) {
         setLetterSpacing2(value)
+        setSpacing2(value)
     }
 
     function handleChangeUmbrella(value: string) {
@@ -110,11 +121,16 @@ export default function Home() {
     }
 
     useEffect(() => {
-        setName(text1)
         setType(currentUmbrella.sku)
         setHandleP(handle.value)
+        setLine(lineNumber)
+        setName(text1)
         setSize(fontSize1)
         setSpacing(letterSpacing1)
+        setName2(text2)
+        setSize2(fontSize2)
+        setSpacing2(letterSpacing2)
+        setDistance(lineHeight)
     }, [])
 
     return (
@@ -295,10 +311,15 @@ export default function Home() {
                                     pathname: '/detail',
                                     query: {
                                         type: currentUmbrella.sku,
-                                        text: text1,
                                         font: key,
+                                        line: lineNumber,
+                                        text: text1,
                                         size: fontSize1,
                                         spacing: letterSpacing1,
+                                        text2: text2,
+                                        size2: fontSize2,
+                                        spacing2: letterSpacing2,
+                                        dis: lineHeight,
                                     },
                                 }}
                             >
@@ -310,7 +331,7 @@ export default function Home() {
                                     />
                                     <div className="content">
                                         <span
-                                            className={`engrave leading-none block ${handle.value}`}
+                                            className={`engrave ${handle.value}`}
                                             style={{
                                                 width: `${currentUmbrella.sizeHandle}cm`,
                                                 letterSpacing: `${letterSpacing1}px`,

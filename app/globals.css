@@ -46,8 +46,8 @@ body {
 .engrave {
     color: transparent;
     -webkit-background-clip: text;
-        -moz-background-clip: text;
-            background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
     display: block;
     line-height: normal;
 }
@@ -55,7 +55,7 @@ body {
 .cn {
     background-color: #000;
     /* text-shadow: rgba(90, 54, 19, 0.86) 0px 0px 0px; */
-    text-shadow:rgb(194 115 48 / 25%) 1px 0px 1px;
+    text-shadow: rgb(194 115 48 / 25%) 1px 0px 1px;
 }
 
 .tm {
@@ -77,12 +77,11 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-align: center;
-    height: 15mm;
+    height: 18mm;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     position: absolute;
     top: 50%;
     left: 15mm;
@@ -106,20 +105,25 @@ body {
 .engraved {
     /* background-color: #fff; */
     width: 12cm;
-    height: 3cm;
-    line-height: 3cm;
+    height: 1.8cm;
+    line-height: normal;
     transform-style: preserve-3d;
     text-align: center;
     transform-origin: center;
     position: absolute;
     overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .engraveText {
     color: transparent;
     -webkit-background-clip: text;
-        -moz-background-clip: text;
-        background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
     display: block;
     text-wrap: nowrap;
 }
@@ -208,7 +212,8 @@ body {
 }
 
 /* md */
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+}
 
 /* lg */
 @media (min-width: 1024px) {
@@ -227,7 +232,9 @@ body {
 }
 
 /* xl */
-@media (min-width: 1280px) {}
+@media (min-width: 1280px) {
+}
 
 /* 2xl */
-@media (min-width: 1536px) {}
+@media (min-width: 1536px) {
+}
