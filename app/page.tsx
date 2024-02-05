@@ -1,9 +1,14 @@
 'use client'
+const download = require('downloadjs')
+
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+
 import { useQueryState } from 'nuqs'
+import { useSearchParams } from 'next/navigation'
+import { toPng } from 'html-to-image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import { faCircleCheck, faDownload } from '@fortawesome/free-solid-svg-icons'
 import {
     engraveFonts,
     kindHandle,
@@ -14,7 +19,6 @@ import {
 
 import { EditContent } from './EditContent'
 import Modal from '@/components/Modal'
-import { useSearchParams } from 'next/navigation'
 
 export default function Home() {
     const searchParam = useSearchParams()
@@ -118,6 +122,38 @@ export default function Home() {
         )
         setHandle(nextHandle)
         setHandleP(nextHandle.value)
+    }
+
+    function handleDownLoadImg(
+        id: number,
+        type: string,
+        handle: string,
+        line: string,
+        text1: string,
+        fz1: string,
+        spacing1: string,
+        text2: string,
+        fz2: string,
+        spacing2: string,
+        dis: string,
+    ) {
+        const element: any = document.getElementById(`imgWithEngraved-${id}`)
+        toPng(element)
+            .then(function (dataUrl) {
+                download(
+                    dataUrl,
+                    `${type}-${handle}-f${
+                        id + 1
+                    }-${text1}-s${fz1}-sp${spacing1}${
+                        line === '2'
+                            ? `-${text2}-s${fz2}-sp${spacing2}-dis${dis}`
+                            : ''
+                    }.png`,
+                )
+            })
+            .catch(function (error) {
+                console.error('oops, something went wrong!', error)
+            })
     }
 
     useEffect(() => {
@@ -304,6 +340,27 @@ export default function Home() {
                         <span className="max-sm:text-sm text-xl absolute max-sm:top-2 max-sm:left-2 top-4 left-4 z-10 flex max-sm:w-5 max-sm:h-5 w-10 h-10 rounded-full bg-main text-white justify-center items-center">
                             {key + 1}
                         </span>
+                        {/* <span className="flex absolute top-20 left-4 z-10 cursor-pointer"> */}
+                        <span
+                            className="cursor-pointer max-sm:text-sm text-xl absolute max-sm:top-8 max-sm:left-2 top-16 left-4 z-10 flex max-sm:w-5 max-sm:h-5 w-10 h-10 rounded-full bg-main text-white justify-center items-center"
+                            onClick={() =>
+                                handleDownLoadImg(
+                                    key,
+                                    currentUmbrella.sku,
+                                    handle.value,
+                                    lineNumber,
+                                    text1,
+                                    fontSize1,
+                                    letterSpacing1,
+                                    text2,
+                                    fontSize2,
+                                    letterSpacing2,
+                                    lineHeight,
+                                )
+                            }
+                        >
+                            <FontAwesomeIcon icon={faDownload} />
+                        </span>
                         <div className="flex items-center w-full overflow-hidden text-center leading-normal">
                             <Link
                                 target="_blank"
@@ -323,7 +380,10 @@ export default function Home() {
                                     },
                                 }}
                             >
-                                <div className="relative">
+                                <div
+                                    className="relative"
+                                    id={`imgWithEngraved-${key}`}
+                                >
                                     <img
                                         src={handle.urlImg}
                                         alt=""
