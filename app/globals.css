@@ -50,6 +50,7 @@ body {
     background-clip: text;
     display: block;
     line-height: normal;
+    text-wrap: nowrap;
 }
 
 .cn {
@@ -74,7 +75,6 @@ body {
 }
 
 .content {
-    white-space: nowrap;
     overflow: hidden;
     text-align: center;
     height: 18mm;
@@ -104,7 +104,6 @@ body {
 
 .engraved {
     /* background-color: #fff; */
-    width: 12cm;
     height: 1.8cm;
     line-height: normal;
     transform-style: preserve-3d;
@@ -112,20 +111,10 @@ body {
     transform-origin: center;
     position: absolute;
     overflow: hidden;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.engraveText {
-    color: transparent;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    display: block;
-    text-wrap: nowrap;
 }
 
 /* Selection */

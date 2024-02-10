@@ -1,11 +1,11 @@
 'use client'
-const download = require('downloadjs')
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 import { useQueryState } from 'nuqs'
 import { useSearchParams } from 'next/navigation'
+const download = require('downloadjs')
 import { toPng } from 'html-to-image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck, faDownload } from '@fortawesome/free-solid-svg-icons'
@@ -23,7 +23,7 @@ import Modal from '@/components/Modal'
 export default function Home() {
     const searchParam = useSearchParams()
     const kindUmbrella: string = searchParam.get('type') || 'g30'
-    const lineP: string = searchParam.get('line') || '0'
+    const lineP: string = searchParam.get('line') || '1'
 
     const nameP: string = searchParam.get('name') || 'Tên Của Bạn'
     const sizeP: string = searchParam.get('size') || '22'
@@ -49,58 +49,72 @@ export default function Home() {
 
     const [distance, setDistance] = useQueryState('dis')
 
-    const [lineNumber, setLineNumber] = useState<string>(lineP)
-    const [lineHeight, setLineHeight] = useState<string>(distanceP)
+    // const [lineNumber, setLineNumber] = useState<string>(lineP)
+    // const [lineHeight, setLineHeight] = useState<string>(distanceP)
+
     const [currentUmbrella, setCurrentUmbrella] = useState<umbrellaO>(
         umbrellas[0],
     )
     const [handle, setHandle] = useState<handleO>(umbrellas[0].handle[0])
 
-    const [text1, setText1] = useState<string>(nameP)
-    const [fontSize1, setFontSize1] = useState<string>(sizeP)
-    const [letterSpacing1, setLetterSpacing1] = useState<string>(spacingP)
+    // const [text1, setText1] = useState<string>(nameP)
+    // const [fontSize1, setFontSize1] = useState<string>(sizeP)
+    // const [letterSpacing1, setLetterSpacing1] = useState<string>(spacingP)
 
-    const [text2, setText2] = useState<string>(nameP2)
-    const [fontSize2, setFontSize2] = useState<string>(sizeP2)
-    const [letterSpacing2, setLetterSpacing2] = useState<string>(spacingP2)
+    // const [text2, setText2] = useState<string>(nameP2)
+    // const [fontSize2, setFontSize2] = useState<string>(sizeP2)
+    // const [letterSpacing2, setLetterSpacing2] = useState<string>(spacingP2)
+
+    useEffect(() => {
+        setType(currentUmbrella.sku)
+        setHandleP(handle.value)
+        setLine(lineP)
+        setName(nameP)
+        setSize(sizeP)
+        setSpacing(spacingP)
+        setName2(nameP2)
+        setSize2(sizeP2)
+        setSpacing2(spacingP2)
+        setDistance(distanceP)
+    }, [])
 
     function handleChangeLineNumber(value: string) {
-        setLineNumber(value)
+        // setLineNumber(value)
         setLine(value)
     }
 
     function handleChangeLineHeight(value: string) {
-        setLineHeight(value)
+        // setLineHeight(value)
         setDistance(value)
     }
 
     function handleChangeContent1(value: string) {
-        setText1(value)
+        // setText1(value)
         setName(value)
     }
 
     function handleChangeFontSize1(value: string) {
-        setFontSize1(value)
+        // setFontSize1(value)
         setSize(value)
     }
 
     function handleChangeLetterSpacing1(value: string) {
-        setLetterSpacing1(value)
+        // setLetterSpacing1(value)
         setSpacing(value)
     }
 
     function handleChangeContent2(value: string) {
-        setText2(value)
+        // setText2(value)
         setName2(value)
     }
 
     function handleChangeFontSize2(value: string) {
-        setFontSize2(value)
+        // setFontSize2(value)
         setSize2(value)
     }
 
     function handleChangeLetterSpacing2(value: string) {
-        setLetterSpacing2(value)
+        // setLetterSpacing2(value)
         setSpacing2(value)
     }
 
@@ -156,19 +170,6 @@ export default function Home() {
             })
     }
 
-    useEffect(() => {
-        setType(currentUmbrella.sku)
-        setHandleP(handle.value)
-        setLine(lineNumber)
-        setName(text1)
-        setSize(fontSize1)
-        setSpacing(letterSpacing1)
-        setName2(text2)
-        setSize2(fontSize2)
-        setSpacing2(letterSpacing2)
-        setDistance(lineHeight)
-    }, [])
-
     return (
         <div className="lg:px-24 max-lg:px-4 lg:pt-20 max-lg:pt-20 container mx-auto">
             <h2 className="text-center text-xl" style={engraveFonts[10].style}>
@@ -188,7 +189,7 @@ export default function Home() {
                                 name="lineNumber"
                                 id="lineNumber1"
                                 value="1"
-                                checked={lineNumber === '1'}
+                                checked={line === '1'}
                                 onChange={(e) =>
                                     handleChangeLineNumber(e.target.value)
                                 }
@@ -214,7 +215,7 @@ export default function Home() {
                                 name="lineNumber"
                                 id="lineNumber2"
                                 value="2"
-                                checked={lineNumber === '2'}
+                                checked={line === '2'}
                                 onChange={(e) =>
                                     handleChangeLineNumber(e.target.value)
                                 }
@@ -272,26 +273,26 @@ export default function Home() {
                         </select>
                     </div>
                     <div className="border-t-gray-300 py-4 border-t">
-                        {lineNumber === '2' && (
+                        {line === '2' && (
                             <p className="font-bold text-center">Dòng 1</p>
                         )}
                         <EditContent
-                            text={text1}
-                            fontSize={fontSize1}
-                            letterSpacing={letterSpacing1}
+                            text={name || nameP}
+                            fontSize={size || sizeP}
+                            letterSpacing={spacing || spacingP}
                             onChangeContent={handleChangeContent1}
                             onChangeFontSize={handleChangeFontSize1}
                             onChangeLetterSpacing={handleChangeLetterSpacing1}
                         />
                     </div>
-                    {lineNumber === '2' && (
+                    {line === '2' && (
                         <>
                             <div className="border-t-gray-300 py-4 border-t">
                                 <p className="font-bold text-center">Dòng 2</p>
                                 <EditContent
-                                    text={text2}
-                                    fontSize={fontSize2}
-                                    letterSpacing={letterSpacing2}
+                                    text={name2 || nameP2}
+                                    fontSize={size2 || sizeP2}
+                                    letterSpacing={spacing2 || spacingP2}
                                     onChangeContent={handleChangeContent2}
                                     onChangeFontSize={handleChangeFontSize2}
                                     onChangeLetterSpacing={
@@ -308,14 +309,14 @@ export default function Home() {
                                         Khoảng cách 2 dòng:
                                     </label>
                                     <span className="font-bold text-main absolute left-1/2 -translate-x-1/2">
-                                        {lineHeight}
+                                        {distance}
                                     </span>
                                     <input
                                         type="range"
                                         name="letterSpacing"
                                         className="rounded w-full mt-6"
                                         placeholder=""
-                                        value={lineHeight}
+                                        value={parseInt(distance || distanceP)}
                                         min={-20}
                                         max={20}
                                         onChange={(e) =>
@@ -342,20 +343,20 @@ export default function Home() {
                         </span>
                         {/* <span className="flex absolute top-20 left-4 z-10 cursor-pointer"> */}
                         <span
-                            className="cursor-pointer max-sm:text-sm text-xl absolute max-sm:top-8 max-sm:left-2 top-16 left-4 z-10 flex max-sm:w-5 max-sm:h-5 w-10 h-10 rounded-full bg-main text-white justify-center items-center"
+                            className="cursor-pointer md:text-md text-xs absolute max-sm:top-8 max-sm:left-2 top-16 left-4 z-10 flex max-sm:w-5 max-sm:h-5 w-10 h-10 rounded-full bg-main text-white justify-center items-center"
                             onClick={() =>
                                 handleDownLoadImg(
                                     key,
                                     currentUmbrella.sku,
                                     handle.value,
-                                    lineNumber,
-                                    text1,
-                                    fontSize1,
-                                    letterSpacing1,
-                                    text2,
-                                    fontSize2,
-                                    letterSpacing2,
-                                    lineHeight,
+                                    line || lineP,
+                                    name || nameP,
+                                    size || sizeP,
+                                    spacing || spacingP,
+                                    name2 || nameP2,
+                                    size2 || sizeP2,
+                                    spacing2 || spacingP2,
+                                    distance || distanceP,
                                 )
                             }
                         >
@@ -369,14 +370,14 @@ export default function Home() {
                                     query: {
                                         type: currentUmbrella.sku,
                                         font: key,
-                                        line: lineNumber,
-                                        text: text1,
-                                        size: fontSize1,
-                                        spacing: letterSpacing1,
-                                        text2: text2,
-                                        size2: fontSize2,
-                                        spacing2: letterSpacing2,
-                                        dis: lineHeight,
+                                        line: line || lineP,
+                                        name: name || nameP,
+                                        size: size || sizeP,
+                                        spacing: spacing || spacingP,
+                                        name2: name2 || nameP2,
+                                        size2: size2 || sizeP2,
+                                        spacing2: spacing2 || spacingP2,
+                                        dis: distance || distanceP,
                                     },
                                 }}
                             >
@@ -394,23 +395,23 @@ export default function Home() {
                                             className={`engrave ${handle.value}`}
                                             style={{
                                                 width: `${currentUmbrella.sizeHandle}cm`,
-                                                letterSpacing: `${letterSpacing1}px`,
-                                                fontSize: `${fontSize1}pt`,
+                                                letterSpacing: `${spacing}px`,
+                                                fontSize: `${size}pt`,
                                             }}
                                         >
-                                            {text1}
+                                            {name}
                                         </span>
-                                        {lineNumber === '2' && (
+                                        {line === '2' && (
                                             <span
                                                 className={`engrave ${handle.value}`}
                                                 style={{
                                                     width: `${currentUmbrella.sizeHandle}cm`,
-                                                    letterSpacing: `${letterSpacing2}px`,
-                                                    fontSize: `${fontSize2}pt`,
-                                                    marginTop: `${lineHeight}px`,
+                                                    letterSpacing: `${spacing2}px`,
+                                                    fontSize: `${size2}pt`,
+                                                    marginTop: `${distance}px`,
                                                 }}
                                             >
-                                                {text2}
+                                                {name2}
                                             </span>
                                         )}
                                     </div>

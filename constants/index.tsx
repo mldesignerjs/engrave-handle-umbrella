@@ -1,3 +1,6 @@
+import { AOC } from '@/components/Umbrellas/AOC'
+import { Chagoi } from '@/components/Umbrellas/Chagoi'
+import { G30 } from '@/components/Umbrellas/G30'
 import {
     faFacebook,
     faInstagram,
@@ -15,6 +18,7 @@ export type umbrellaO = {
     sku: string
     sizeHandle: number
     handle: handleA
+    detailPage: React.ReactElement
 }
 export type umbrellaA = umbrellaO[]
 export type optionFonts = {
@@ -134,16 +138,19 @@ export const footerMenuList = []
 
 export const sizeHandle = [
     {
+        id: 0,
         name: '8 cm',
         value: 8,
         // value: 8,
     },
     {
+        id: 1,
         name: '12 cm',
         value: 12,
         // value: 12,
     },
     {
+        id: 2,
         name: '5.7 cm',
         value: 5.7,
         // value: 12,
@@ -169,10 +176,10 @@ export const umbrellas: umbrellaA = [
     {
         id: 0,
         name: 'Ô tự động',
-        sku: 'otd',
+        sku: 'aoc',
         sizeHandle: 5.7,
-        // sizeHandle: 5.5,
         handle: [{ value: 'nhua', urlImg: 'o-td.jpg', id: 0 }],
+        detailPage: <AOC />,
     },
     {
         id: 1,
@@ -180,6 +187,7 @@ export const umbrellas: umbrellaA = [
         sizeHandle: 8,
         sku: 'chagoi',
         handle: [{ value: 'tm', urlImg: 'chagoi-den.jpg', id: 0 }],
+        detailPage: <Chagoi />,
     },
     {
         id: 2,
@@ -190,6 +198,7 @@ export const umbrellas: umbrellaA = [
             { value: 'cn', urlImg: 'g27-cn.jpg', id: 0 },
             { value: 'tm', urlImg: 'g27-trac.jpg', id: 1 },
         ],
+        detailPage: <G30 />,
     },
     {
         id: 3,
@@ -200,5 +209,6 @@ export const umbrellas: umbrellaA = [
             { value: 'cn', urlImg: 'g30-cn.jpg', id: 0 },
             { value: 'tm', urlImg: 'g30-trac.jpg', id: 1 },
         ],
+        detailPage: <G30 />,
     },
 ]
