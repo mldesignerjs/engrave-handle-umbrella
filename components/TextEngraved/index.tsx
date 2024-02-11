@@ -1,9 +1,9 @@
 'use client'
 import { useSearchParams } from 'next/navigation'
-import { engraveFonts, umbrellas } from '@/constants'
+import { engraveFonts, handleO, umbrellas } from '@/constants'
 import { useEffect, useState } from 'react'
 export interface ITextEngravedProps {
-    handle: 'cn' | 'tm' | 'nhua'
+    handle: handleO['value']
 }
 
 export function TextEngraved(props: ITextEngravedProps) {

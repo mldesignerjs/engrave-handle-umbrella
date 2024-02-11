@@ -1,6 +1,3 @@
-import { AOC } from '@/components/Umbrellas/AOC'
-import { Chagoi } from '@/components/Umbrellas/Chagoi'
-import { G30 } from '@/components/Umbrellas/G30'
 import {
     faFacebook,
     faInstagram,
@@ -12,13 +9,26 @@ import localFont from 'next/font/local'
 
 export type handleO = { value: string; urlImg: string; id: number }
 export type handleA = handleO[]
+export type textEngraveInImg = {
+    handle: handleO['value']
+    x: number
+    y: number
+    rotateX: number
+    rotateY: number
+    rotateZ: number
+    scale: number
+}
+export type detailPage =
+    | { imgSrc: string; texts: textEngraveInImg[] | null }[]
+    | null
+
 export type umbrellaO = {
     id: number
     name: string
     sku: string
     sizeHandle: number
     handle: handleA
-    detailPage: React.ReactElement
+    detailPage: detailPage
 }
 export type umbrellaA = umbrellaO[]
 export type optionFonts = {
@@ -179,7 +189,114 @@ export const umbrellas: umbrellaA = [
         sku: 'aoc',
         sizeHandle: 5.7,
         handle: [{ value: 'nhua', urlImg: 'o-td.jpg', id: 0 }],
-        detailPage: <AOC />,
+        detailPage: [
+            {
+                imgSrc: '/aoc-5-colors.jpg',
+                texts: [
+                    {
+                        handle: 'nhua',
+                        x: 50.8,
+                        y: 10.5,
+                        rotateX: 0,
+                        rotateY: 0,
+                        rotateZ: 90,
+                        scale: 0.7,
+                    },
+                    {
+                        handle: 'nhua',
+                        x: 50.8,
+                        y: 31,
+                        rotateX: 0,
+                        rotateY: 0,
+                        rotateZ: 90,
+                        scale: 0.7,
+                    },
+                    {
+                        handle: 'nhua',
+                        x: 50.8,
+                        y: 51,
+                        rotateX: 0,
+                        rotateY: 0,
+                        rotateZ: 90,
+                        scale: 0.7,
+                    },
+                    {
+                        handle: 'nhua',
+                        x: 50.8,
+                        y: 71.3,
+                        rotateX: 0,
+                        rotateY: 0,
+                        rotateZ: 90,
+                        scale: 0.7,
+                    },
+                    {
+                        handle: 'nhua',
+                        x: 50.8,
+                        y: 91,
+                        rotateX: 0,
+                        rotateY: 0,
+                        rotateZ: 90,
+                        scale: 0.7,
+                    },
+                ],
+            },
+            {
+                imgSrc: '/aoc-in-box.jpg',
+                texts: [
+                    {
+                        handle: 'nhua',
+                        x: 75.4,
+                        y: 31.2,
+                        rotateX: 0,
+                        rotateY: 0,
+                        rotateZ: -47,
+                        scale: 1.04,
+                    },
+                ],
+            },
+            {
+                imgSrc: '/aoc-handle.jpg',
+                texts: [
+                    {
+                        handle: 'nhua',
+                        x: 62.4,
+                        y: 59.4,
+                        rotateX: 12,
+                        rotateY: -12,
+                        rotateZ: -108,
+                        scale: 2.06,
+                    },
+                ],
+            },
+            {
+                imgSrc: '/aoc-khong-trung.jpg',
+                texts: [
+                    {
+                        handle: 'nhua',
+                        x: 62,
+                        y: 50.25,
+                        rotateX: 0,
+                        rotateY: 0,
+                        rotateZ: 90,
+                        scale: 0.8,
+                    },
+                ],
+            },
+            {
+                imgSrc: '/aoc-on-floor.jpg',
+                texts: [
+                    {
+                        handle: 'nhua',
+                        x: 36.05,
+                        y: 50.25,
+                        rotateX: 0,
+                        rotateY: 0,
+                        rotateZ: 90,
+                        scale: 0.78,
+                    },
+                ],
+            },
+        ],
     },
     {
         id: 1,
@@ -187,7 +304,7 @@ export const umbrellas: umbrellaA = [
         sizeHandle: 8,
         sku: 'chagoi',
         handle: [{ value: 'tm', urlImg: 'chagoi-den.jpg', id: 0 }],
-        detailPage: <Chagoi />,
+        detailPage: null,
     },
     {
         id: 2,
@@ -198,7 +315,7 @@ export const umbrellas: umbrellaA = [
             { value: 'cn', urlImg: 'g27-cn.jpg', id: 0 },
             { value: 'tm', urlImg: 'g27-trac.jpg', id: 1 },
         ],
-        detailPage: <G30 />,
+        detailPage: null,
     },
     {
         id: 3,
@@ -209,6 +326,97 @@ export const umbrellas: umbrellaA = [
             { value: 'cn', urlImg: 'g30-cn.jpg', id: 0 },
             { value: 'tm', urlImg: 'g30-trac.jpg', id: 1 },
         ],
-        detailPage: <G30 />,
+        detailPage: [
+            {
+                imgSrc: '/g30-banner.jpg',
+                texts: [
+                    {
+                        handle: 'cn',
+                        x: 44.8,
+                        y: 55.74,
+                        rotateX: -46,
+                        rotateY: 0,
+                        rotateZ: -29,
+                        scale: 0.68,
+                    },
+                    {
+                        handle: 'cn',
+                        x: 57.15,
+                        y: 22.3,
+                        rotateX: 34,
+                        rotateY: 0,
+                        rotateZ: -115,
+                        scale: 0.66,
+                    },
+                    {
+                        handle: 'cn',
+                        x: 83,
+                        y: 42.34,
+                        rotateX: 41,
+                        rotateY: -11,
+                        rotateZ: -23,
+                        scale: 0.7,
+                    },
+                ],
+            },
+            {
+                imgSrc: '/tay-cam.jpg',
+                texts: [
+                    {
+                        handle: 'cn',
+                        x: 24.5,
+                        y: 35,
+                        rotateX: 10,
+                        rotateY: 21,
+                        rotateZ: 53,
+                        scale: 2.3,
+                    },
+                ],
+            },
+            {
+                imgSrc: '/g30-3-loai-go.jpg',
+                texts: [
+                    {
+                        handle: 'cn',
+                        x: 12.7,
+                        y: 23,
+                        rotateX: 14,
+                        rotateY: 3,
+                        rotateZ: 113,
+                        scale: 1.5,
+                    },
+                    {
+                        handle: 'tm',
+                        x: 74,
+                        y: 28,
+                        rotateX: 15,
+                        rotateY: 6,
+                        rotateZ: -65,
+                        scale: 1.5,
+                    },
+                    {
+                        handle: 'tm',
+                        x: 77,
+                        y: 81,
+                        rotateX: 15,
+                        rotateY: 6,
+                        rotateZ: 113,
+                        scale: 1.5,
+                    },
+                ],
+            },
+            {
+                imgSrc: '/mau-g30-1.jpg',
+                texts: null,
+            },
+            {
+                imgSrc: '/mau-g30-2.jpg',
+                texts: null,
+            },
+            {
+                imgSrc: '/mau-g30-3.jpg',
+                texts: null,
+            },
+        ],
     },
 ]

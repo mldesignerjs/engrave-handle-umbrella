@@ -22,7 +22,6 @@ import Modal from '@/components/Modal'
 
 export default function Home() {
     const searchParam = useSearchParams()
-    const kindUmbrella: string = searchParam.get('type') || 'g30'
     const lineP: string = searchParam.get('line') || '1'
 
     const nameP: string = searchParam.get('name') || 'Tên Của Bạn'
@@ -49,21 +48,10 @@ export default function Home() {
 
     const [distance, setDistance] = useQueryState('dis')
 
-    // const [lineNumber, setLineNumber] = useState<string>(lineP)
-    // const [lineHeight, setLineHeight] = useState<string>(distanceP)
-
     const [currentUmbrella, setCurrentUmbrella] = useState<umbrellaO>(
         umbrellas[0],
     )
     const [handle, setHandle] = useState<handleO>(umbrellas[0].handle[0])
-
-    // const [text1, setText1] = useState<string>(nameP)
-    // const [fontSize1, setFontSize1] = useState<string>(sizeP)
-    // const [letterSpacing1, setLetterSpacing1] = useState<string>(spacingP)
-
-    // const [text2, setText2] = useState<string>(nameP2)
-    // const [fontSize2, setFontSize2] = useState<string>(sizeP2)
-    // const [letterSpacing2, setLetterSpacing2] = useState<string>(spacingP2)
 
     useEffect(() => {
         setType(currentUmbrella.sku)
@@ -79,42 +67,34 @@ export default function Home() {
     }, [])
 
     function handleChangeLineNumber(value: string) {
-        // setLineNumber(value)
         setLine(value)
     }
 
     function handleChangeLineHeight(value: string) {
-        // setLineHeight(value)
         setDistance(value)
     }
 
     function handleChangeContent1(value: string) {
-        // setText1(value)
         setName(value)
     }
 
     function handleChangeFontSize1(value: string) {
-        // setFontSize1(value)
         setSize(value)
     }
 
     function handleChangeLetterSpacing1(value: string) {
-        // setLetterSpacing1(value)
         setSpacing(value)
     }
 
     function handleChangeContent2(value: string) {
-        // setText2(value)
         setName2(value)
     }
 
     function handleChangeFontSize2(value: string) {
-        // setFontSize2(value)
         setSize2(value)
     }
 
     function handleChangeLetterSpacing2(value: string) {
-        // setLetterSpacing2(value)
         setSpacing2(value)
     }
 
@@ -341,7 +321,6 @@ export default function Home() {
                         <span className="max-sm:text-sm text-xl absolute max-sm:top-2 max-sm:left-2 top-4 left-4 z-10 flex max-sm:w-5 max-sm:h-5 w-10 h-10 rounded-full bg-main text-white justify-center items-center">
                             {key + 1}
                         </span>
-                        {/* <span className="flex absolute top-20 left-4 z-10 cursor-pointer"> */}
                         <span
                             className="cursor-pointer md:text-md text-xs absolute max-sm:top-8 max-sm:left-2 top-16 left-4 z-10 flex max-sm:w-5 max-sm:h-5 w-10 h-10 rounded-full bg-main text-white justify-center items-center"
                             onClick={() =>
@@ -366,9 +345,8 @@ export default function Home() {
                             <Link
                                 target="_blank"
                                 href={{
-                                    pathname: '/detail',
+                                    pathname: `/detail/${currentUmbrella.sku}`,
                                     query: {
-                                        type: currentUmbrella.sku,
                                         font: key,
                                         line: line || lineP,
                                         name: name || nameP,

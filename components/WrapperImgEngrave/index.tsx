@@ -1,11 +1,8 @@
-import { Ref } from 'react'
 import Image from 'next/image'
-
 const download = require('downloadjs')
 import { toPng } from 'html-to-image'
 
 export interface IWrapperImgEngraveProps {
-    refDiv: Ref<HTMLDivElement>
     children: React.ReactNode
     src: string
 }
@@ -24,13 +21,13 @@ export function WrapperImgEngrave(props: IWrapperImgEngraveProps) {
 
     return (
         <>
-            <div className="pic" ref={props.refDiv}>
+            <div className="pic">
                 <Image
-                    // ref={props.ref}
                     src={props.src}
                     width={1500}
                     height={2000}
                     alt={''}
+                    priority={true}
                     className="w-full"
                 />
                 {props.children}
